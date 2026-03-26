@@ -1,0 +1,52 @@
+{
+  "messages": [
+    {
+      "id": "msg_1",
+      "sender": "Alice Johnson",
+      "subject": "Inquiry about project",
+      "body": "Hi, I'd like to know more about your recent project. Could you provide details?",
+      "received_at": "2025-03-25T10:30:00Z",
+      "status": "unread",
+      "ai_summary": "Visitor asks for project details.",
+      "ai_response": "Will provide project details."
+    },
+    {
+      "id": "msg_2",
+      "sender": "Bob Smith",
+      "subject": "Collaboration opportunity",
+      "body": "Hello, I'm interested in collaborating on your upcoming work. Let's discuss.",
+      "received_at": "2025-03-24T15:20:00Z",
+      "status": "read",
+      "ai_summary": "Potential collaboration inquiry.",
+      "ai_response": "Replied with interest."
+    },
+    {
+      "id": "msg_3",
+      "sender": "Carol Davis",
+      "subject": "Feedback on demo",
+      "body": "The demo looks great! I have some suggestions for improvement.",
+      "received_at": "2025-03-23T09:15:00Z",
+      "status": "archived"
+    },
+    {
+      "id": "msg_4",
+      "sender": "David Lee",
+      "subject": "Question about AI capabilities",
+      "body": "Can the AI assistant handle complex coding tasks? I'm evaluating it for our team.",
+      "received_at": "2025-03-22T14:10:00Z",
+      "status": "unread",
+      "ai_summary": "Asking about AI assistant's coding abilities.",
+      "ai_response": "Yes, it can handle complex coding tasks with context."
+    },
+    {
+      "id": "msg_5",
+      "sender": "Emma Wilson",
+      "subject": "Suggestion for new feature",
+      "body": "I think adding a voice input feature would make the assistant even more useful. Just a thought!",
+      "received_at": "2025-03-21T09:45:00Z",
+      "status": "read"
+    }
+  ],
+  "created_at": "2025-03-20T00:00:00Z",
+  "version": "1.0"
+}

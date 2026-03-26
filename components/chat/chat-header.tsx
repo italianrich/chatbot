@@ -1,12 +1,12 @@
 "use client";
 
-import { PanelLeftIcon } from "lucide-react";
-import Link from "next/link";
-import { memo } from "react";
+import { InboxIcon, PanelLeftIcon } from "lucide-react";
+import { memo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useSidebar } from "@/components/ui/sidebar";
-import { VercelIcon } from "./icons";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
+import { InboxModal } from "./inbox-modal";
 
 function PureChatHeader({
   chatId,
@@ -18,52 +18,47 @@ function PureChatHeader({
   isReadonly: boolean;
 }) {
   const { state, toggleSidebar, isMobile } = useSidebar();
+  const [inboxOpen, setInboxOpen] = useState(false);
 
   if (state === "collapsed" && !isMobile) {
     return null;
   }
 
   return (
-    <header className="sticky top-0 flex h-14 items-center gap-2 bg-sidebar px-3">
-      <Button
-        className="md:hidden"
-        onClick={toggleSidebar}
-        size="icon-sm"
-        variant="ghost"
-      >
-        <PanelLeftIcon className="size-4" />
-      </Button>
-
-      <Link
-        className="flex size-8 items-center justify-center rounded-lg md:hidden"
-        href="https://vercel.com/templates/next.js/chatbot"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <VercelIcon size={14} />
-      </Link>
-
-      {!isReadonly && (
-        <VisibilitySelector
-          chatId={chatId}
-          selectedVisibilityType={selectedVisibilityType}
-        />
-      )}
-
-      <Button
-        asChild
-        className="hidden rounded-lg bg-foreground px-4 text-background hover:bg-foreground/90 md:ml-auto md:flex"
-      >
-        <Link
-          href="https://vercel.com/templates/next.js/chatbot"
-          rel="noopener noreferrer"
-          target="_blank"
+    <>
+      <header className="sticky top-0 flex h-14 items-center gap-2 bg-sidebar px-3">
+        <Button
+          className="md:hidden"
+          onClick={toggleSidebar}
+          size="icon-sm"
+          variant="ghost"
         >
-          <VercelIcon size={16} />
-          Deploy with Vercel
-        </Link>
-      </Button>
-    </header>
+          <PanelLeftIcon className="size-4" />
+        </Button>
+
+        {/* Demo badge */}
+        <Badge variant="destructive" className="text-xs font-medium px-2 py-0.5">
+          DEMO
+        </Badge>
+
+        {!isReadonly && (
+          <VisibilitySelector
+            chatId={chatId}
+            selectedVisibilityType={selectedVisibilityType}
+          />
+        )}
+
+        <Button
+          variant="ghost"
+          className="ml-auto flex items-center gap-2 text-sm"
+          onClick={() => setInboxOpen(true)}
+        >
+          <InboxIcon className="size-4" />
+          <span className="hidden sm:inline">Inbox</span>
+        </Button>
+      </header>
+      <InboxModal open={inboxOpen} onOpenChange={setInboxOpen} />
+    </>
   );
 }
 
